@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BSBookingQuery.BLL\BSBookingQuery.BLL.csproj" />
     <ProjectReference Include="..\BSBookingQuery.DAL\BSBookingQuery.DAL.csproj" />
+    <ProjectReference Include="..\BSBookingQuery.Mapping\BSBookingQuery.Mapping.csproj" />
   </ItemGroup>
 
 </Project>
