@@ -5,43 +5,54 @@ using System.Linq.Expressions;
 
 namespace BSBookingQuery.DAL.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly BSBookingQueryContext context;
+        protected readonly BSBookingQueryContext _dbContext;
         public GenericRepository(BSBookingQueryContext context)
         {
-            this.context = context;
+            this._dbContext = context;
         }
-        public void Add(T entity)
+
+        public async Task<T> GetById(int id)
         {
-            context.Set<T>().Add(entity);
+            _dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            return await _dbContext.Set<T>().FindAsync(id);
         }
-        public void AddRange(IEnumerable<T> entities)
+
+        public async Task<IEnumerable<T>> GetAll()
         {
-            context.Set<T>().AddRange(entities);
+            _dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            return await _dbContext.Set<T>().ToListAsync();
         }
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+
+        public async Task Add(T entity)
         {
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return context.Set<T>().Where(expression);
+            await _dbContext.Set<T>().AddAsync(entity);
         }
-        public IEnumerable<T> GetAll()
+
+        public async Task AddRange(IEnumerable<T> entities)
         {
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return context.Set<T>().ToList();
+            await _dbContext.Set<T>().AddRangeAsync(entities);
         }
-        public T GetById(int id)
+
+        public void Delete(T entity)
         {
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return context.Set<T>().Find(id);
+            _dbContext.Set<T>().Remove(entity);
         }
-        public void Remove(T entity)
+
+        public void DeleteRange(IEnumerable<T> entitys)
         {
-            context.Set<T>().Remove(entity);
+            _dbContext.Set<T>().RemoveRange(entitys);
         }
-        public void RemoveRange(IEnumerable<T> entities)
+
+        public void Update(T entity)
         {
-            context.Set<T>().RemoveRange(entities);
+            _dbContext.Set<T>().Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<T> entitys)
+        {
+            _dbContext.Set<T>().UpdateRange(entitys);
         }
     }
 }
