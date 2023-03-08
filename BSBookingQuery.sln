@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.DAL", "BSBoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.BLL", "BSBookingQuery.BLL\BSBookingQuery.BLL.csproj", "{D0C6B533-B31D-4B5B-8184-7C19204DCA07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.IOC", "BSBookingQuery.IOC\BSBookingQuery.IOC.csproj", "{644925D0-59DA-43FA-8031-0BF3740A54DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D0C6B533-B31D-4B5B-8184-7C19204DCA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C6B533-B31D-4B5B-8184-7C19204DCA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C6B533-B31D-4B5B-8184-7C19204DCA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{644925D0-59DA-43FA-8031-0BF3740A54DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644925D0-59DA-43FA-8031-0BF3740A54DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644925D0-59DA-43FA-8031-0BF3740A54DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644925D0-59DA-43FA-8031-0BF3740A54DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
