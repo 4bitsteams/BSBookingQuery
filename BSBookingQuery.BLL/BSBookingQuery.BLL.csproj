@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BSBookingQuery.DAL\BSBookingQuery.DAL.csproj" />
+    <ProjectReference Include="..\BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj" />
+  </ItemGroup>
+
 </Project>
