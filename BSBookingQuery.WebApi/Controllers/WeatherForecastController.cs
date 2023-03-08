@@ -1,3 +1,5 @@
+using BSBookingQuery.BLL.IManager;
+using BSBookingQuery.ViewModel.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSBookingQuery.WebApi.Controllers
@@ -12,10 +14,18 @@ namespace BSBookingQuery.WebApi.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly ILocationManager locationManager;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ILocationManager locationManager)
         {
             _logger = logger;
+            this.locationManager = locationManager;
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<LocationViewModel> GetLocationById(int id)
+        {
+            return await locationManager.GetById(id);
         }
 
         [HttpGet(Name = "GetWeatherForecast")]

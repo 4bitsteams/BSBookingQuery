@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BSBookingQuery.DAL\BSBookingQuery.DAL.csproj" />
     <ProjectReference Include="..\BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj" />
   </ItemGroup>

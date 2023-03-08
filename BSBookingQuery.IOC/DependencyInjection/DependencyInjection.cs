@@ -1,6 +1,7 @@
 ﻿using BSBookingQuery.BLL.IManager;
 using BSBookingQuery.BLL.Manager;
 using BSBookingQuery.DAL.ApplicationDbContext;
+using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,7 +16,9 @@ namespace BSBookingQuery.IOC.DependencyInjection
         {
             services.AddDbContext<BSBookingQueryContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(BSBookingQueryContext).Assembly.FullName)), ServiceLifetime.Transient);
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILocationManager, LocationManager>();
+
             services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             return services;
         }
