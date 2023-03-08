@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.IOC", "BSBoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Mapping", "BSBookingQuery.Mapping\BSBookingQuery.Mapping.csproj", "{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Extention", "BSBookingQuery.Extention\BSBookingQuery.Extention.csproj", "{EAFE6325-88D4-44DD-A7B6-95858D983254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFE6325-88D4-44DD-A7B6-95858D983254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFE6325-88D4-44DD-A7B6-95858D983254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFE6325-88D4-44DD-A7B6-95858D983254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFE6325-88D4-44DD-A7B6-95858D983254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
