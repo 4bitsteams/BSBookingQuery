@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Entity", "BSBookingQuery.Entity\BSBookingQuery.Entity.csproj", "{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.ViewModel", "BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj", "{24965E29-820E-44DE-9B30-6456861C198A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24965E29-820E-44DE-9B30-6456861C198A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24965E29-820E-44DE-9B30-6456861C198A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24965E29-820E-44DE-9B30-6456861C198A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24965E29-820E-44DE-9B30-6456861C198A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
