@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BSBookingQuery.Entity\BSBookingQuery.Entity.csproj" />
+    <ProjectReference Include="..\BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

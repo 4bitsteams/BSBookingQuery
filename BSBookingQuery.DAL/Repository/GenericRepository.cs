@@ -1,58 +1,42 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
 using BSBookingQuery.DAL.IRepository;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace BSBookingQuery.DAL.Repository
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly BSBookingQueryContext _dbContext;
+        internal DbSet<T> DbSet { get; set; }
         public GenericRepository(BSBookingQueryContext context)
         {
             this._dbContext = context;
+            this.DbSet = this._dbContext.Set<T>();
         }
 
-        public async Task<T> GetById(int id)
+        public virtual Task<bool> AddEntity(T entity)
         {
-            _dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return await _dbContext.Set<T>().FindAsync(id);
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public virtual Task<bool> DeleteEntity(int id)
         {
-            _dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            return await _dbContext.Set<T>().ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task Add(T entity)
+        public virtual Task<List<T>> GetAllAsync()
         {
-            await _dbContext.Set<T>().AddAsync(entity);
+            return this.DbSet.ToListAsync();
         }
 
-        public async Task AddRange(IEnumerable<T> entities)
+        public virtual Task<T> GetAsync(int id)
         {
-            await _dbContext.Set<T>().AddRangeAsync(entities);
+            throw new NotImplementedException();
         }
 
-        public void Delete(T entity)
+        public virtual Task<bool> UpdateEntity(T entity)
         {
-            _dbContext.Set<T>().Remove(entity);
-        }
-
-        public void DeleteRange(IEnumerable<T> entitys)
-        {
-            _dbContext.Set<T>().RemoveRange(entitys);
-        }
-
-        public void Update(T entity)
-        {
-            _dbContext.Set<T>().Update(entity);
-        }
-
-        public void UpdateRange(IEnumerable<T> entitys)
-        {
-            _dbContext.Set<T>().UpdateRange(entitys);
+            throw new NotImplementedException();
         }
     }
 }

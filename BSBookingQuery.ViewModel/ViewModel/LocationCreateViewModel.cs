@@ -1,6 +1,6 @@
 ﻿namespace BSBookingQuery.ViewModel.ViewModel
 {
-    public class CreateViewModel
+    public class LocationCreateViewModel
     {
     }
 }

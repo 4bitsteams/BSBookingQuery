@@ -25,7 +25,7 @@ namespace BSBookingQuery.WebApi.Controllers
         [HttpGet]
         public async Task<LocationViewModel> GetLocationById(int id)
         {
-            return await locationManager.GetById(id);
+            return await locationManager.GetAsync(id);
         }
 
         [HttpGet(Name = "GetWeatherForecast")]

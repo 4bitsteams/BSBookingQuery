@@ -16,44 +16,29 @@ namespace BSBookingQuery.BLL.Manager
             _mapper = mapper;
         }
 
-        public Task Add(CreateViewModel entity)
+        public Task<bool> Add(LocationCreateViewModel entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task AddRange(IEnumerable<CreateViewModel> entities)
+        public Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(DeleteViewModel entity)
+        public Task<List<LocationViewModel>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteRange(IEnumerable<DeleteViewModel> entities)
+        public async Task<LocationViewModel> GetAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<LocationViewModel>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<LocationViewModel> GetById(int id)
-        {
-            var result=await this.unitOfWork.Location.GetById(id);
+            var result = await this.unitOfWork.Location.GetAsync(id);
             var pp = _mapper.Map<Location, LocationViewModel>(result);
             return pp;
         }
 
-        public void Update(UpdateViewModel entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRange(IEnumerable<UpdateViewModel> entities)
+        public Task<bool> Update(LocationUpdateViewModel entity)
         {
             throw new NotImplementedException();
         }
