@@ -19,7 +19,6 @@ namespace BSBookingQuery.IOC.DependencyInjection
             services.AddDbContext<BSBookingQueryContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(BSBookingQueryContext).Assembly.FullName)), ServiceLifetime.Transient);
             services.AddTransient<ILocationManager, LocationManager>();
-            services.AddTransient<ILocationRepository, LocationRepository>();
             services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             return services;

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BSBookingQuery.DAL.Repository
 {
-    public class LocationRepository : GenericRepository<Location>, ILocationRepository
+    class LocationRepository : GenericRepository<Location>, ILocationRepository
     {
         public LocationRepository(BSBookingQueryContext context) : base(context)
         {

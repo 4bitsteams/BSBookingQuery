@@ -12,7 +12,6 @@ namespace BSBookingQuery.DAL.UnitOfWork
         public UnitOfWork(BSBookingQueryContext context)
         {
             this.context = context;
-            //locationRepository = new LocationRepository(this.context);
         }
 
 
@@ -24,11 +23,6 @@ namespace BSBookingQuery.DAL.UnitOfWork
             }
             return this.locationRepository;
         }
-
-
-
-
-
 
         //~UnitOfWork()=>Dispose();
         //public void Dispose()
