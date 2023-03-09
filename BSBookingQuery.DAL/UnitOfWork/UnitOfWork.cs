@@ -1,45 +1,49 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
-using BSBookingQuery.DAL.IRepository;
-using BSBookingQuery.DAL.Repository;
 
 namespace BSBookingQuery.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
         private BSBookingQueryContext context;
+        private bool _disposed;
         public UnitOfWork(BSBookingQueryContext context)
         {
             this.context = context;
-            Hotel = new HotelRepository(this.context);
-            Comment = new CommentRepository(this.context);
-            Location = new LocationRepository(this.context);
-            Rating = new RatingRepository(this.context);
-        }
-        public IHotelRepository Hotel
-        {
-            get;
-        }
-        public ICommentRepository Comment
-        {
-            get;
-        }
-        public ILocationRepository Location
-        {
-            get;
         }
 
-        public IRatingRepository Rating
-        {
-            get;
-        }
+        //~UnitOfWork()=>Dispose();
         public void Dispose()
         {
-            context.Dispose();
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
-        public int Save()
+
+        public virtual void Dispose(bool disposing)
         {
-            return context.SaveChanges();
+            if (!_disposed && disposing)
+            {
+                this.context.Dispose();
+            }
+            _disposed = true;
+        }
+
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            using var tran = await context.Database.BeginTransactionAsync();
+            try
+            {
+                var result = await context.SaveChangesAsync(cancellationToken);
+                await tran.CommitAsync();
+                var d = tran.TransactionId;
+                return result;
+            }
+            catch (Exception)
+            {
+                await tran.RollbackAsync();
+                throw;
+            }
+
         }
     }
 }

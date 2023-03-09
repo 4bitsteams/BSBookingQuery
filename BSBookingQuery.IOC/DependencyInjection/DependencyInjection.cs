@@ -1,6 +1,8 @@
 ﻿using BSBookingQuery.BLL.IManager;
 using BSBookingQuery.BLL.Manager;
 using BSBookingQuery.DAL.ApplicationDbContext;
+using BSBookingQuery.DAL.IRepository;
+using BSBookingQuery.DAL.Repository;
 using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Mapping;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +20,7 @@ namespace BSBookingQuery.IOC.DependencyInjection
                 b => b.MigrationsAssembly(typeof(BSBookingQueryContext).Assembly.FullName)), ServiceLifetime.Transient);
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ILocationManager, LocationManager>();
+            services.AddTransient<ILocationRepository, LocationRepository>();
 
             services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             return services;

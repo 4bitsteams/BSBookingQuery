@@ -1,14 +1,18 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
 using BSBookingQuery.DAL.IRepository;
+using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BSBookingQuery.DAL.Repository
 {
-    class LocationRepository : GenericRepository<Location>, ILocationRepository
+    public class LocationRepository : GenericRepository<Location>, ILocationRepository
     {
-        public LocationRepository(BSBookingQueryContext context) : base(context) { }
-
+        private readonly IUnitOfWork unitOfWork;
+        public LocationRepository(BSBookingQueryContext context, IUnitOfWork unitOfWork) : base(context) {
+            this.unitOfWork = unitOfWork;
+        }
+        
         public override Task<List<Location>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             return base.GetAllAsync(cancellationToken);

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BSBookingQuery.BLL.IManager;
-using BSBookingQuery.DAL.UnitOfWork;
+using BSBookingQuery.DAL.IRepository;
 using BSBookingQuery.Entity.Models;
 using BSBookingQuery.ViewModel.ViewModel;
 
@@ -8,12 +8,12 @@ namespace BSBookingQuery.BLL.Manager
 {
     public class LocationManager : ILocationManager
     {
-        private readonly IUnitOfWork unitOfWork;
         private readonly IMapper _mapper;
-        public LocationManager(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly ILocationRepository locationRepository;
+        public LocationManager(IMapper mapper, ILocationRepository locationRepository)
         {
-            this.unitOfWork = unitOfWork;
             _mapper = mapper;
+            this.locationRepository = locationRepository;
         }
 
         public Task<bool> Add(LocationCreateViewModel entity, CancellationToken cancellationToken = default)
@@ -33,7 +33,7 @@ namespace BSBookingQuery.BLL.Manager
 
         public async Task<LocationViewModel> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            var result = await this.unitOfWork.Location.GetAsync(id);
+            var result = await this.locationRepository.GetAsync(id);
             var _map = _mapper.Map<Location, LocationViewModel>(result);
             return _map;
         }
