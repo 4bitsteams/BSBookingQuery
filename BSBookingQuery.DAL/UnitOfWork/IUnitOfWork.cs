@@ -1,6 +1,6 @@
 ﻿namespace BSBookingQuery.DAL.UnitOfWork
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork /*: IDisposable*/
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

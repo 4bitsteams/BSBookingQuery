@@ -16,31 +16,42 @@ namespace BSBookingQuery.BLL.Manager
             this.locationRepository = locationRepository;
         }
 
-        public Task<bool> Add(LocationCreateViewModel entity, CancellationToken cancellationToken = default)
+        public async Task<bool> Add(LocationCreateViewModel entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var _map = _mapper.Map<LocationCreateViewModel,Location>(entity);
+            _map.CreatedBy = 1; //TODO it is come from Uer Session
+            _map.CreatedDate = DateTime.Now;
+            _map.IsActive = true;
+            _map.IsDeleted = false;
+            return await this.locationRepository.AddEntity(_map, cancellationToken);
         }
 
-        public Task<bool> Delete(int id, CancellationToken cancellationToken = default)
+        public async Task<bool> Update(LocationUpdateViewModel entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var _map = _mapper.Map<LocationUpdateViewModel, Location>(entity);
+            _map.UpdatedBy= 1; //TODO it is come from Uer Session
+            _map.UpdatedDate = DateTime.Now;
+            return await this.locationRepository.UpdateEntity(_map, cancellationToken);
         }
 
-        public Task<List<LocationViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<bool> Delete(int id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await this.locationRepository.DeleteEntity(id,cancellationToken);
+        }
+
+        public async Task<List<LocationViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            var result = await this.locationRepository.GetAllAsync(cancellationToken);
+            var _map = _mapper.Map<List<Location>, List<LocationViewModel>>(result);
+            return _map;
         }
 
         public async Task<LocationViewModel> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            var result = await this.locationRepository.GetAsync(id);
+            var result = await this.locationRepository.GetAsync(id, cancellationToken);
             var _map = _mapper.Map<Location, LocationViewModel>(result);
             return _map;
         }
-
-        public Task<bool> Update(LocationUpdateViewModel entity, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }

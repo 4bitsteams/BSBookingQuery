@@ -26,7 +26,7 @@ namespace BSBookingQuery.DAL.Repository
 
         public virtual Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return this.DbSet.ToListAsync();
+            return this.DbSet.AsNoTracking().ToListAsync(cancellationToken);
         }
 
         public virtual Task<T> GetAsync(int id, CancellationToken cancellationToken = default)

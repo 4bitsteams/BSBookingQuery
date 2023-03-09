@@ -8,7 +8,11 @@ namespace BSBookingQuery.Mapping
     {
         public SetupMapperProfile()
         {
+            #region map entity for location
             CreateMap<LocationViewModel, Location>().ReverseMap();
+            CreateMap<LocationCreateViewModel, Location>().ReverseMap();
+            CreateMap<LocationUpdateViewModel, Location>().ReverseMap();
+            #endregion
         }
     }
 }
