@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BSBookingQuery.DAL.Repository
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
+    public  class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly BSBookingQueryContext _dbContext;
         internal DbSet<T> DbSet { get; set; }

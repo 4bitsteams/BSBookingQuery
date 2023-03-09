@@ -1,6 +1,5 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
 using BSBookingQuery.DAL.IRepository;
-using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +7,8 @@ namespace BSBookingQuery.DAL.Repository
 {
     public class LocationRepository : GenericRepository<Location>, ILocationRepository
     {
-        private readonly IUnitOfWork unitOfWork;
-        public LocationRepository(BSBookingQueryContext context, IUnitOfWork unitOfWork) : base(context)
+        public LocationRepository(BSBookingQueryContext context) : base(context)
         {
-            this.unitOfWork = unitOfWork;
         }
 
         public override Task<List<Location>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -28,7 +25,6 @@ namespace BSBookingQuery.DAL.Repository
         {
             //TODO Need to Check Duplicate Data
             await DbSet.AddAsync(entity, cancellationToken);
-            await unitOfWork.SaveChangesAsync(cancellationToken);
             return true;
         }
         public override async Task<bool> UpdateEntity(Location entity, CancellationToken cancellationToken = default)
@@ -39,7 +35,6 @@ namespace BSBookingQuery.DAL.Repository
             {
                 //DbSet.Entry<Location>(original).CurrentValues.SetValues(entity);
                 DbSet.Update(entity);
-                await unitOfWork.SaveChangesAsync(cancellationToken);
                 return true;
             }
             else
