@@ -4,10 +4,10 @@ namespace BSBookingQuery.BLL.IManager
 {
     public interface ILocationManager
     {
-        Task<List<LocationViewModel>> GetAllAsync();
-        Task<LocationViewModel> GetAsync(int id);
-        Task<bool> Add(LocationCreateViewModel entity);
-        Task<bool> Update(LocationUpdateViewModel entity);
-        Task<bool> Delete(int id);
+        Task<List<LocationViewModel>> GetAllAsync(CancellationToken cancellationToken = default);
+        Task<LocationViewModel> GetAsync(int id, CancellationToken cancellationToken = default);
+        Task<bool> Add(LocationCreateViewModel entity, CancellationToken cancellationToken = default);
+        Task<bool> Update(LocationUpdateViewModel entity, CancellationToken cancellationToken = default);
+        Task<bool> Delete(int id, CancellationToken cancellationToken = default);
     }
 }

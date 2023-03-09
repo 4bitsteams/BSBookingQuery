@@ -16,29 +16,29 @@ namespace BSBookingQuery.BLL.Manager
             _mapper = mapper;
         }
 
-        public Task<bool> Add(LocationCreateViewModel entity)
+        public Task<bool> Add(LocationCreateViewModel entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(int id)
+        public Task<bool> Delete(int id, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<LocationViewModel>> GetAllAsync()
+        public Task<List<LocationViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<LocationViewModel> GetAsync(int id)
+        public async Task<LocationViewModel> GetAsync(int id, CancellationToken cancellationToken = default)
         {
             var result = await this.unitOfWork.Location.GetAsync(id);
-            var pp = _mapper.Map<Location, LocationViewModel>(result);
-            return pp;
+            var _map = _mapper.Map<Location, LocationViewModel>(result);
+            return _map;
         }
 
-        public Task<bool> Update(LocationUpdateViewModel entity)
+        public Task<bool> Update(LocationUpdateViewModel entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }

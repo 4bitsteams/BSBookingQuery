@@ -1,7 +1,6 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
 using BSBookingQuery.DAL.IRepository;
 using BSBookingQuery.Entity.Models;
-using BSBookingQuery.ViewModel.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace BSBookingQuery.DAL.Repository
@@ -10,36 +9,37 @@ namespace BSBookingQuery.DAL.Repository
     {
         public LocationRepository(BSBookingQueryContext context) : base(context) { }
 
-        public override Task<List<Location>> GetAllAsync()
+        public override Task<List<Location>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return base.GetAllAsync();
+            return base.GetAllAsync(cancellationToken);
         }
-        public override async Task<Location> GetAsync(int id)
+        public override async Task<Location> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            return await DbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id);
+            var result = await DbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
+            return result;
         }
 
-        public override async Task<bool> AddEntity(Location entity)
+        public override async Task<bool> AddEntity(Location entity, CancellationToken cancellationToken = default)
         {
-                await DbSet.AddAsync(entity);
-                return true;
+            await DbSet.AddAsync(entity, cancellationToken);
+            return true;
         }
-        public override async Task<bool> UpdateEntity(Location entity)
+        public override async Task<bool> UpdateEntity(Location entity, CancellationToken cancellationToken = default)
         {
-                var original = await DbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == entity.Id);
-                if (original != null)
-                {
+            var original = await DbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == entity.Id);
+            if (original != null)
+            {
                 //DbSet.Entry<Location>(original).CurrentValues.SetValues(entity);
                 DbSet.Update(entity);
                 return true;
-                }
-                else
-                {
-                    return false;
-                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public override async Task<bool> DeleteEntity(int id)
+        public override async Task<bool> DeleteEntity(int id, CancellationToken cancellationToken = default)
         {
             var existdata = await DbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id);
             if (existdata != null)
