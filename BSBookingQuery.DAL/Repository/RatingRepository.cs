@@ -7,6 +7,11 @@ namespace BSBookingQuery.DAL.Repository
 {
     class RatingRepository : GenericRepository<Rating>, IRatingRepository
     {
+        internal static class CacheKeyDictionary
+        {
+            public static string RatingGetAllAsyncCacheKey => "Rating.GetAllAsync";
+            public static string RatingGetAsyncCacheKey => "Rating.GetAsync";
+        }
         public RatingRepository(BSBookingQueryContext context) : base(context) { }
 
         public override Task<List<Rating>> GetAllAsync(CancellationToken cancellationToken = default)
