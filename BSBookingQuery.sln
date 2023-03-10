@@ -3,26 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Entity", "BSBookingQuery.Entity\BSBookingQuery.Entity.csproj", "{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.Entity", "BSBookingQuery.Entity\BSBookingQuery.Entity.csproj", "{1EAB3331-D82A-48B1-BAC8-8A2B5BCAEEAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.ViewModel", "BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj", "{24965E29-820E-44DE-9B30-6456861C198A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.ViewModel", "BSBookingQuery.ViewModel\BSBookingQuery.ViewModel.csproj", "{24965E29-820E-44DE-9B30-6456861C198A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.DAL", "BSBookingQuery.DAL\BSBookingQuery.DAL.csproj", "{F706BE2A-4944-46F9-B392-782174208B57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.DAL", "BSBookingQuery.DAL\BSBookingQuery.DAL.csproj", "{F706BE2A-4944-46F9-B392-782174208B57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.BLL", "BSBookingQuery.BLL\BSBookingQuery.BLL.csproj", "{D0C6B533-B31D-4B5B-8184-7C19204DCA07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.BLL", "BSBookingQuery.BLL\BSBookingQuery.BLL.csproj", "{D0C6B533-B31D-4B5B-8184-7C19204DCA07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.IOC", "BSBookingQuery.IOC\BSBookingQuery.IOC.csproj", "{644925D0-59DA-43FA-8031-0BF3740A54DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.IOC", "BSBookingQuery.IOC\BSBookingQuery.IOC.csproj", "{644925D0-59DA-43FA-8031-0BF3740A54DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Mapping", "BSBookingQuery.Mapping\BSBookingQuery.Mapping.csproj", "{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.Mapping", "BSBookingQuery.Mapping\BSBookingQuery.Mapping.csproj", "{3DB1A3D2-63BB-45EC-A65C-6E58A9318709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Extention", "BSBookingQuery.Extention\BSBookingQuery.Extention.csproj", "{EAFE6325-88D4-44DD-A7B6-95858D983254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.Extention", "BSBookingQuery.Extention\BSBookingQuery.Extention.csproj", "{EAFE6325-88D4-44DD-A7B6-95858D983254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.WebApi", "BSBookingQuery.WebApi\BSBookingQuery.WebApi.csproj", "{4E1A9370-642E-4698-B2BF-AE642E8665BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSBookingQuery.WebApi", "BSBookingQuery.WebApi\BSBookingQuery.WebApi.csproj", "{4E1A9370-642E-4698-B2BF-AE642E8665BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28049D7D-36EF-4FAD-BFC6-3DC2CD2C3517}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSBookingQuery.Test", "BSBookingQuery.Test\BSBookingQuery.Test.csproj", "{3524CBC6-27B2-4E6E-8200-BB73FADA3199}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{4E1A9370-642E-4698-B2BF-AE642E8665BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E1A9370-642E-4698-B2BF-AE642E8665BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E1A9370-642E-4698-B2BF-AE642E8665BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3524CBC6-27B2-4E6E-8200-BB73FADA3199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3524CBC6-27B2-4E6E-8200-BB73FADA3199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3524CBC6-27B2-4E6E-8200-BB73FADA3199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3524CBC6-27B2-4E6E-8200-BB73FADA3199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
