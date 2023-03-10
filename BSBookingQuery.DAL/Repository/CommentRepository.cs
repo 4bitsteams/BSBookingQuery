@@ -25,6 +25,7 @@ namespace BSBookingQuery.DAL.Repository
         {
             if ((searchModel.HotelId != null && searchModel.HotelId > 0) && (searchModel.PageId != null && searchModel.PageId > 0))
             {
+                //TODO Js Plugin to view Comment
                 return await DbSet.AsNoTracking().Where(x => x.HotelId == searchModel.HotelId && x.PageId == searchModel.PageId).ToListAsync(cancellationToken);
             }
             return null;
