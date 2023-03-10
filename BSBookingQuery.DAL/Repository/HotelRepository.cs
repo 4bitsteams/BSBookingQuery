@@ -3,6 +3,7 @@ using BSBookingQuery.DAL.IRepository;
 using BSBookingQuery.Entity.Models;
 using BSBookingQuery.ViewModel.ViewModel.Hotel;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace BSBookingQuery.DAL.Repository
 {
@@ -29,6 +30,18 @@ namespace BSBookingQuery.DAL.Repository
                 return result.ToList();
             }
             return query;
+        }
+
+        public async Task<List<Hotel>> SearchHotelByRating(SearchModel searchModel, CancellationToken cancellationToken = default)
+        {
+            // var query = DbSet.Include(x=>x.Rating).AsQueryable(); //TODO AsQueryable with Include Not Working need to optimize
+            var query = await DbSet.AsNoTracking().Include(x => x.Rating).Where(x => x.IsDeleted != true).ToListAsync();
+            var result = new List<Hotel>();
+            if ((searchModel.FromRating != null && searchModel.FromRating > 0) && (searchModel.ToRating != null && searchModel.ToRating > 0))
+            {
+                return query.Where(x => x.Rating.Rank >= searchModel.FromRating && x.Rating.Rank <= searchModel.ToRating).ToList();
+            }
+            return result;
         }
         public override async Task<Hotel> GetAsync(int id, CancellationToken cancellationToken = default)
         {

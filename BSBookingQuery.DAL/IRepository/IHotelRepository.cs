@@ -7,5 +7,6 @@ namespace BSBookingQuery.DAL.IRepository
     public interface IHotelRepository : IGenericRepository<Hotel>
     {
         Task<List<Hotel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default);
+        Task<List<Hotel>> SearchHotelByRating(SearchModel searchModel, CancellationToken cancellationToken = default);
     }
 }

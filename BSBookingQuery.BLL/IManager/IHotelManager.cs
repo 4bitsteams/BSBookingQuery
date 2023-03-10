@@ -10,5 +10,6 @@ namespace BSBookingQuery.BLL.IManager
         Task<bool> Update(HotelUpdateViewModel entity, CancellationToken cancellationToken = default);
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
         Task<List<HotelViewModel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default);
+        Task<List<HotelViewModel>> SearchHotelByRating(SearchModel searchModel, CancellationToken cancellationToken = default);
     }
 }

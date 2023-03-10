@@ -57,6 +57,13 @@ namespace BSBookingQuery.BLL.Manager
             var result = await this.unitOfWork.HotelRepository().Search(searchModel,cancellationToken);
             var _map = _mapper.Map<List<Hotel>, List<HotelViewModel>>(result);
             return _map;
+        } 
+        
+        public async Task<List<HotelViewModel>> SearchHotelByRating(SearchModel searchModel,CancellationToken cancellationToken = default)
+        {
+            var result = await this.unitOfWork.HotelRepository().SearchHotelByRating(searchModel,cancellationToken);
+            var _map = _mapper.Map<List<Hotel>, List<HotelViewModel>>(result);
+            return _map;
         }
 
         public async Task<HotelViewModel> GetAsync(int id, CancellationToken cancellationToken = default)
