@@ -106,7 +106,6 @@ namespace BSBookingQuery.WebApi.Controllers
             try
             {
                 var _data = await this.locationManager.Delete(id);
-                //await this.unitofWork.CompleteAsync();
                 return Ok(_data);
             }
             catch (System.Exception ex)
