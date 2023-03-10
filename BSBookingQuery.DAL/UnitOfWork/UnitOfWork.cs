@@ -10,6 +10,7 @@ namespace BSBookingQuery.DAL.UnitOfWork
         public ILocationRepository locationRepository { get; private set; }
         public IRatingRepository ratingRepository { get; private set; }
         public IHotelRepository hotelRepository { get; private set; }
+        public ICommentRepository commentRepository { get; private set; }
         //private bool _disposed;
         public UnitOfWork(BSBookingQueryContext context)
         {
@@ -41,6 +42,15 @@ namespace BSBookingQuery.DAL.UnitOfWork
                 this.hotelRepository = new HotelRepository(this.context);
             }
             return this.hotelRepository;
+        }
+
+        public ICommentRepository CommentRepository()
+        {
+            if (this.commentRepository == null)
+            {
+                this.commentRepository = new CommentRepository(this.context);
+            }
+            return this.commentRepository;
         }
 
         //~UnitOfWork()=>Dispose();

@@ -19,6 +19,7 @@ namespace BSBookingQuery.IOC.DependencyInjection
             services.AddTransient<ILocationManager, LocationManager>();
             services.AddTransient<IRatingManager, RatingManager>();
             services.AddTransient<IHotelManager, HotelManager>();
+            services.AddTransient<ICommentManager, CommentManager>();
             services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             return services;
