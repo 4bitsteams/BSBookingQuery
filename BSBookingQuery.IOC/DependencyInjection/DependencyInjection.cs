@@ -18,6 +18,7 @@ namespace BSBookingQuery.IOC.DependencyInjection
                 b => b.MigrationsAssembly(typeof(BSBookingQueryContext).Assembly.FullName)), ServiceLifetime.Transient);
             services.AddTransient<ILocationManager, LocationManager>();
             services.AddTransient<IRatingManager, RatingManager>();
+            services.AddTransient<IHotelManager, HotelManager>();
             services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             services.AddTransient<IUnitOfWork,UnitOfWork>();
             return services;

@@ -6,6 +6,7 @@ namespace BSBookingQuery.DAL.UnitOfWork
     {
         ILocationRepository LocationRepository();
         IRatingRepository RatingRepository();
+        IHotelRepository HotelRepository();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
