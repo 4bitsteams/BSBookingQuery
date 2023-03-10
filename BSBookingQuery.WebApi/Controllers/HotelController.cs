@@ -30,6 +30,24 @@ namespace BSBookingQuery.WebApi.Controllers
                 return null;
             }
         }
+
+        [HttpPost("SearchHotel")]
+        public async Task<IActionResult> Search(SearchModel searchModel)
+        {
+            try
+            {
+                var _data = await this.HotelManager.Search(searchModel);
+                return Ok(_data);
+            }
+            catch (System.Exception ex)
+            {
+                _iLogger.LogError("HotelController - Task<IActionResult> Search(SearchModel searchModel)", ex);
+                //TODO Need to Send Message And Status Code
+                return null;
+            }
+        }
+
+
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {

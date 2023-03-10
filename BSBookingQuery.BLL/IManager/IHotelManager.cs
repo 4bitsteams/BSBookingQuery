@@ -9,5 +9,6 @@ namespace BSBookingQuery.BLL.IManager
         Task<bool> Add(HotelCreateViewModel entity, CancellationToken cancellationToken = default);
         Task<bool> Update(HotelUpdateViewModel entity, CancellationToken cancellationToken = default);
         Task<bool> Delete(int id, CancellationToken cancellationToken = default);
+        Task<List<HotelViewModel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default);
     }
 }
