@@ -3,7 +3,6 @@ using BSBookingQuery.DAL.IRepository;
 using BSBookingQuery.Entity.Models;
 using BSBookingQuery.ViewModel.ViewModel.Hotel;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace BSBookingQuery.DAL.Repository
 {
@@ -16,10 +15,24 @@ namespace BSBookingQuery.DAL.Repository
             return base.GetAllAsync(cancellationToken);
         }
 
+        //public async Task<List<Hotel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default)
+        //{
+        //    string st = searchModel.SearchText.Trim().ToLower();
+        //    var query = DbSet.AsNoTracking().Include(x => x.Rating).Include(x => x.Location).Where(x => x.IsDeleted != true);
+        //    if (!string.IsNullOrEmpty(searchModel.SearchText))
+        //    {
+        //        query = query.Where(x => x.Id.ToString().ToLower().Contains(st)
+        //         || x.Name.ToString().ToLower().Contains(st)
+        //         || x.Rating.Name.ToLower().Contains(st)
+        //         || x.Location.Name.ToLower().StartsWith(st));
+        //        return await query.ToListAsync(cancellationToken);
+        //    }
+        //    return null;
+        //}
+
         public async Task<List<Hotel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default)
         {
             string st = searchModel.SearchText.Trim().ToLower();
-            // var query = DbSet.Include(x=>x.Rating).Include(x=>x.Location).AsQueryable(); //TODO AsQueryable with Include Not Working need to optimize
             var query = await DbSet.AsNoTracking().Include(x => x.Rating).Include(x => x.Location).Where(x => x.IsDeleted != true).ToListAsync();
             if (!string.IsNullOrEmpty(searchModel.SearchText))
             {
@@ -27,21 +40,20 @@ namespace BSBookingQuery.DAL.Repository
                  || x.Name.ToString().ToLower().Contains(st)
                  || x.Rating.Name.ToLower().Contains(st)
                  || x.Location.Name.ToLower().StartsWith(st));
-                return result.ToList();
+                return  result.ToList();
             }
-            return query;
+            return null;
         }
 
         public async Task<List<Hotel>> SearchHotelByRating(SearchModel searchModel, CancellationToken cancellationToken = default)
         {
-            // var query = DbSet.Include(x=>x.Rating).AsQueryable(); //TODO AsQueryable with Include Not Working need to optimize
-            var query = await DbSet.AsNoTracking().Include(x => x.Rating).Where(x => x.IsDeleted != true).ToListAsync();
-            var result = new List<Hotel>();
+            var query = DbSet.AsNoTracking().Include(x => x.Rating).Where(x => x.IsDeleted != true);
             if ((searchModel.FromRating != null && searchModel.FromRating > 0) && (searchModel.ToRating != null && searchModel.ToRating > 0))
             {
-                return query.Where(x => x.Rating.Rank >= searchModel.FromRating && x.Rating.Rank <= searchModel.ToRating).ToList();
+                query = query.Where(x => x.Rating.Rank >= searchModel.FromRating && x.Rating.Rank <= searchModel.ToRating);
+                return await query.ToListAsync(cancellationToken);
             }
-            return result;
+            return null;
         }
         public override async Task<Hotel> GetAsync(int id, CancellationToken cancellationToken = default)
         {
