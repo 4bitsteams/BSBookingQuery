@@ -1,5 +1,6 @@
 ﻿using BSBookingQuery.BLL.IManager;
 using BSBookingQuery.ViewModel.ViewModel.Comment;
+using BSBookingQuery.ViewModel.ViewModel.Hotel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSBookingQuery.WebApi.Controllers
@@ -15,6 +16,22 @@ namespace BSBookingQuery.WebApi.Controllers
             this.CommentManager = CommentManager;
             _iLogger = iLogger;
         }
+        [HttpPost("GetCommentByHotelId")]
+        public async Task<IActionResult> GetCommentByHotelId(SearchModel searchModel)
+        {
+            try
+            {
+                var _data = await this.CommentManager.GetCommentByHotelIdAsync(searchModel);
+                return Ok(_data);
+            }
+            catch (System.Exception ex)
+            {
+                _iLogger.LogError("CommentController - Task<IActionResult> GetCommentByHotelId(SearchModel searchModel)", ex);
+                //TODO Need to Send Message And Status Code
+                return null;
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

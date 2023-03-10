@@ -1,6 +1,7 @@
 ﻿using BSBookingQuery.DAL.ApplicationDbContext;
 using BSBookingQuery.DAL.IRepository;
 using BSBookingQuery.Entity.Models;
+using BSBookingQuery.ViewModel.ViewModel.Hotel;
 using Microsoft.EntityFrameworkCore;
 
 namespace BSBookingQuery.DAL.Repository
@@ -12,6 +13,15 @@ namespace BSBookingQuery.DAL.Repository
         public override Task<List<Comment>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             return base.GetAllAsync(cancellationToken);
+        }
+
+        public async Task<List<Comment>> GetCommentByHotelIdAsync(SearchModel searchModel, CancellationToken cancellationToken = default)
+        {
+            if ((searchModel.HotelId != null && searchModel.HotelId > 0) && (searchModel.PageId != null && searchModel.PageId > 0))
+            {
+                return await DbSet.AsNoTracking().Where(x => x.HotelId==searchModel.HotelId && x.PageId==searchModel.PageId).ToListAsync(cancellationToken);
+            }
+            return null;
         }
         public override async Task<Comment> GetAsync(int id, CancellationToken cancellationToken = default)
         {

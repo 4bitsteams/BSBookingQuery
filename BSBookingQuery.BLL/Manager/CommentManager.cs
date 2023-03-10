@@ -3,6 +3,7 @@ using BSBookingQuery.BLL.IManager;
 using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Entity.Models;
 using BSBookingQuery.ViewModel.ViewModel.Comment;
+using BSBookingQuery.ViewModel.ViewModel.Hotel;
 
 namespace BSBookingQuery.BLL.Manager
 {
@@ -48,6 +49,13 @@ namespace BSBookingQuery.BLL.Manager
         public async Task<List<CommentViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var result = await this.unitOfWork.CommentRepository().GetAllAsync(cancellationToken);
+            var _map = _mapper.Map<List<Comment>, List<CommentViewModel>>(result);
+            return _map;
+        }
+        
+        public async Task<List<CommentViewModel>> GetCommentByHotelIdAsync(SearchModel searchModel,CancellationToken cancellationToken = default)
+        {
+            var result = await this.unitOfWork.CommentRepository().GetCommentByHotelIdAsync(searchModel,cancellationToken);
             var _map = _mapper.Map<List<Comment>, List<CommentViewModel>>(result);
             return _map;
         }
