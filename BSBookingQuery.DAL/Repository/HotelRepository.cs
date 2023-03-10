@@ -15,32 +15,17 @@ namespace BSBookingQuery.DAL.Repository
             return base.GetAllAsync(cancellationToken);
         }
 
-        //public async Task<List<Hotel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default)
-        //{
-        //    string st = searchModel.SearchText.Trim().ToLower();
-        //    var query = DbSet.AsNoTracking().Include(x => x.Rating).Include(x => x.Location).Where(x => x.IsDeleted != true);
-        //    if (!string.IsNullOrEmpty(searchModel.SearchText))
-        //    {
-        //        query = query.Where(x => x.Id.ToString().ToLower().Contains(st)
-        //         || x.Name.ToString().ToLower().Contains(st)
-        //         || x.Rating.Name.ToLower().Contains(st)
-        //         || x.Location.Name.ToLower().StartsWith(st));
-        //        return await query.ToListAsync(cancellationToken);
-        //    }
-        //    return null;
-        //}
-
         public async Task<List<Hotel>> Search(SearchModel searchModel, CancellationToken cancellationToken = default)
         {
             string st = searchModel.SearchText.Trim().ToLower();
-            var query = await DbSet.AsNoTracking().Include(x => x.Rating).Include(x => x.Location).Where(x => x.IsDeleted != true).ToListAsync();
+            var query = DbSet.AsNoTracking().Include(x => x.Rating).Include(x => x.Location).Where(x => x.IsDeleted != true);
             if (!string.IsNullOrEmpty(searchModel.SearchText))
             {
-                var result = query.Where(x => x.Id.ToString().ToLower().Contains(st)
-                 || x.Name.ToString().ToLower().Contains(st)
+                query = query.Where(x => x.Id.ToString().ToLower().Contains(st)
+                 || x.Name.ToLower().Contains(st)
                  || x.Rating.Name.ToLower().Contains(st)
                  || x.Location.Name.ToLower().StartsWith(st));
-                return  result.ToList();
+                return await query.ToListAsync(cancellationToken);
             }
             return null;
         }
