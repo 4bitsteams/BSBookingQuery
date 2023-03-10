@@ -1,18 +1,18 @@
 ﻿using BSBookingQuery.BLL.IManager;
-using BSBookingQuery.ViewModel.ViewModel.Location;
+using BSBookingQuery.ViewModel.ViewModel.Rating;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSBookingQuery.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LocationController : ControllerBase
+    public class RatingController : ControllerBase
     {
-        private readonly ILocationManager locationManager;
-        private readonly ILogger<LocationController> _iLogger;
-        public LocationController(ILocationManager locationManager, ILogger<LocationController> iLogger)
+        private readonly IRatingManager RatingManager;
+        private readonly ILogger<RatingController> _iLogger;
+        public RatingController(IRatingManager RatingManager, ILogger<RatingController> iLogger)
         {
-            this.locationManager = locationManager;
+            this.RatingManager = RatingManager;
             _iLogger = iLogger;
         }
         [HttpGet]
@@ -20,12 +20,12 @@ namespace BSBookingQuery.WebApi.Controllers
         {
             try
             {
-                var _data = await this.locationManager.GetAllAsync();
+                var _data = await this.RatingManager.GetAllAsync();
                 return Ok(_data);
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("LocationController - Task<IActionResult> GetAll()", ex);
+                _iLogger.LogError("RatingController - Task<IActionResult> GetAll()", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }
@@ -41,26 +41,26 @@ namespace BSBookingQuery.WebApi.Controllers
                     return null;
                 }
 
-                var _data = await this.locationManager.GetAsync(id);
+                var _data = await this.RatingManager.GetAsync(id);
                 return Ok(_data);
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("LocationController - Task<IActionResult> GetById(int id)", ex);
+                _iLogger.LogError("RatingController - Task<IActionResult> GetById(int id)", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create(LocationCreateViewModel model)
+        public async Task<IActionResult> Create(RatingCreateViewModel model)
         {
             try
             {
 
                 if (ModelState.IsValid)
                 {
-                    var _data = await this.locationManager.Add(model);
+                    var _data = await this.RatingManager.Add(model);
                     return Ok(_data);
                 }
                 else
@@ -71,20 +71,20 @@ namespace BSBookingQuery.WebApi.Controllers
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("LocationController - Task<IActionResult> Create(LocationCreateViewModel model)", ex);
+                _iLogger.LogError("RatingController - Task<IActionResult> Create(RatingCreateViewModel model)", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }
 
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(LocationUpdateViewModel model)
+        public async Task<IActionResult> Update(RatingUpdateViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var _data = await this.locationManager.Update(model);
+                    var _data = await this.RatingManager.Update(model);
                     return Ok(_data);
                 }
                 else
@@ -95,7 +95,7 @@ namespace BSBookingQuery.WebApi.Controllers
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("LocationController - Task<IActionResult> Update(LocationUpdateViewModel model)", ex);
+                _iLogger.LogError("RatingController - Task<IActionResult> Update(RatingUpdateViewModel model)", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }
@@ -105,12 +105,12 @@ namespace BSBookingQuery.WebApi.Controllers
         {
             try
             {
-                var _data = await this.locationManager.Delete(id);
+                var _data = await this.RatingManager.Delete(id);
                 return Ok(_data);
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("LocationController - Task<IActionResult> Remove(int id)", ex);
+                _iLogger.LogError("RatingController - Task<IActionResult> Remove(int id)", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }

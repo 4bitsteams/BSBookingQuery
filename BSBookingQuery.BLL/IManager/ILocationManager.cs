@@ -1,4 +1,4 @@
-﻿using BSBookingQuery.ViewModel.ViewModel;
+﻿using BSBookingQuery.ViewModel.ViewModel.Location;
 
 namespace BSBookingQuery.BLL.IManager
 {

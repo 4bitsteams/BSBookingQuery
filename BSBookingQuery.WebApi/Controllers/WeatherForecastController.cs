@@ -1,5 +1,5 @@
 using BSBookingQuery.BLL.IManager;
-using BSBookingQuery.ViewModel.ViewModel;
+using BSBookingQuery.ViewModel.ViewModel.Location;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BSBookingQuery.WebApi.Controllers

@@ -1,4 +1,4 @@
-﻿namespace BSBookingQuery.ViewModel.ViewModel
+﻿namespace BSBookingQuery.ViewModel.ViewModel.Location
 {
     public class LocationViewModel
     {

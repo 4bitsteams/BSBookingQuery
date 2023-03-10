@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BSBookingQuery.ViewModel.ViewModel
+namespace BSBookingQuery.ViewModel.ViewModel.Location
 {
-    public class LocationCreateViewModel
+    public class LocationUpdateViewModel
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -11,6 +13,5 @@ namespace BSBookingQuery.ViewModel.ViewModel
 
         public decimal? Longitude { get; set; }
         public decimal? Latitude { get; set; }
-        public string Description { get; set; }
     }
 }
