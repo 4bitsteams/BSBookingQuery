@@ -8,6 +8,13 @@ namespace BSBookingQuery.DAL.Repository
 {
     class HotelRepository : GenericRepository<Hotel>, IHotelRepository
     {
+        internal static class CacheKeyDictionary
+        {
+            public static string HotelGetAllAsyncCacheKey => "Hotel.GetAllAsync";
+            public static string HotelGetAsyncCacheKey => "Hotel.GetAsync";
+            public static string HotelSearchCacheKey => "Hotel.Search";
+            public static string HotelSearchHotelByRatingCacheKey => "Hotel.SearchHotelByRating";
+        }
         public HotelRepository(BSBookingQueryContext context) : base(context) { }
 
         public override Task<List<Hotel>> GetAllAsync(CancellationToken cancellationToken = default)

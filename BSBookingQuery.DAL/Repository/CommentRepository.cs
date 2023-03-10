@@ -8,6 +8,12 @@ namespace BSBookingQuery.DAL.Repository
 {
     class CommentRepository : GenericRepository<Comment>, ICommentRepository
     {
+        internal static class CacheKeyDictionary
+        {
+            public static string CommentGetAllAsyncCacheKey => "Comment.GetAllAsync";
+            public static string CommentGetAsyncCacheKey => "Comment.GetAsync";
+            public static string CommentGetCommentByHotelIdAsyncCacheKey => "Comment.GetCommentByHotelIdAsync";
+        }
         public CommentRepository(BSBookingQueryContext context) : base(context) { }
 
         public override Task<List<Comment>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -19,7 +25,7 @@ namespace BSBookingQuery.DAL.Repository
         {
             if ((searchModel.HotelId != null && searchModel.HotelId > 0) && (searchModel.PageId != null && searchModel.PageId > 0))
             {
-                return await DbSet.AsNoTracking().Where(x => x.HotelId==searchModel.HotelId && x.PageId==searchModel.PageId).ToListAsync(cancellationToken);
+                return await DbSet.AsNoTracking().Where(x => x.HotelId == searchModel.HotelId && x.PageId == searchModel.PageId).ToListAsync(cancellationToken);
             }
             return null;
         }
