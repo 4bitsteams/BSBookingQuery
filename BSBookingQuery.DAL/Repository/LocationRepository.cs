@@ -7,6 +7,12 @@ namespace BSBookingQuery.DAL.Repository
 {
     class LocationRepository : GenericRepository<Location>, ILocationRepository
     {
+        internal static class CacheKeyDictionary
+        {
+            public static string LocationGetAllAsyncCacheKey => "Location.GetAllAsync";
+            public static string LocationGetAsyncCacheKey => "Location.GetAsync";
+        }
+
         public LocationRepository(BSBookingQueryContext context) : base(context)
         {
         }
