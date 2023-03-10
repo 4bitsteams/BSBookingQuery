@@ -57,7 +57,7 @@ namespace BSBookingQuery.WebApi.Controllers
             }
             catch (System.Exception ex)
             {
-                _iLogger.LogError("HotelController - Task<IActionResult> Search(SearchModel searchModel)", ex);
+                _iLogger.LogError("HotelController - Task<IActionResult> SearchHotelByRating(SearchModel searchModel)", ex);
                 //TODO Need to Send Message And Status Code
                 return null;
             }
