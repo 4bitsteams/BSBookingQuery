@@ -1,8 +1,6 @@
 ﻿using BSBookingQuery.BLL.IManager;
 using BSBookingQuery.BLL.Manager;
 using BSBookingQuery.DAL.ApplicationDbContext;
-using BSBookingQuery.DAL.IRepository;
-using BSBookingQuery.DAL.Repository;
 using BSBookingQuery.DAL.UnitOfWork;
 using BSBookingQuery.Mapping;
 using Microsoft.EntityFrameworkCore;
